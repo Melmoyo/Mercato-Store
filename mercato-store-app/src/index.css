@@ -1,0 +1,42 @@
+@import "tailwindcss";
+:root {
+  /*LightMode*/
+  --primary: #d06a4b; /*buttons links active state*/
+  --background: #faf9f7; /*pagebg*/
+  --foreground: #2c2520; /*primary text*/
+  --card: #ffffff; /*cardbg*/
+  --muted: #f2f0ed;
+  --muted--foreground: #7a6e62;
+  --border: #e6e3de; /*border and dividers*/
+  --destructive: #c44536; /*error states*/
+
+  /*DarkMode*/
+  --primary-darkmode: #e68a6a; /*buttons links active state*/
+  --background-darkmode: #1e1c1a; /*pagebg*/
+  --foreground-darkmode: #f5f3f0; /*primary text*/
+  --card-darkmode: #2a2724; /*cardbg*/
+  --muted-darkmode: #36322e;
+  --muted--foreground-darkmode: #958f87;
+  --destructive-darkmode: #46413c; /*error states*/
+
+  /*Fonts*/
+  -sans-serif: "Geist";
+  -mono-space: "Geist Mono";
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--background);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(-mono-space);
+}
+h1 {
+  color: var(--foreground);
+}

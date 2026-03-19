@@ -8,7 +8,6 @@ import {
   faPlus,
   faXmark,
   faMinus,
-  faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useContext } from "react";
 import { CartContext } from "../context/CartContext";
@@ -20,7 +19,7 @@ const Navbar = () => {
   const {
     cart,
     removeItem,
-    addItem,
+
     increaseQuantity,
     decreaseQuantity,
     clearCart,

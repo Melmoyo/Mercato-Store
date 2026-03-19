@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import type { ProductInfo } from "../api/fakeStoreApi";
 const Home = () => {
-  const [products, setProducts] = useState<ProductInfo[]>([]);
+  const [products, _setProducts] = useState<ProductInfo[]>([]);
 
   const location = useLocation();
   const prod = location.state?.dev;

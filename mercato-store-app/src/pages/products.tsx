@@ -1,7 +1,7 @@
 import ProductList from "../components/ProductList";
 import SearchBar from "../components/searchbar";
 import Categories from "../components/categories";
-import type { ProductInfo } from "../api/fakeStoreApi";
+
 import { useContext } from "react";
 import { ProductContext } from "../context/ProductContext";
 import type { ProductContextProps } from "../context/ProductContext";

@@ -24,8 +24,10 @@ export function ProductProvider({ children }: ProductProviderProps) {
     .filter((product) =>
       activeFilter === "all" ? true : product.category === activeFilter,
     )
-    .filter((product) =>
-      product.title.toLowerCase().includes(searchQuery.toLowerCase()),
+    .filter(
+      (product) =>
+        product.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.title.toLowerCase().includes(searchQuery.toLowerCase()),
     );
   useEffect(() => {
     const fetchFilteredProducts = async () => {
@@ -35,6 +37,7 @@ export function ProductProvider({ children }: ProductProviderProps) {
     };
     fetchFilteredProducts();
   }, []);
+  console.log(products);
   return (
     <ProductContext.Provider
       value={{

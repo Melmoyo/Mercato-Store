@@ -24,11 +24,7 @@ const Navbar = () => {
     decreaseQuantity,
     clearCart,
   } = context;
-  console.log("Cart" + cart);
-  console.log(JSON.stringify(cart, null, 2));
-  const location = useLocation();
-  const product = location.state?.prod;
-  console.log(product);
+
   const subtotal = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0,

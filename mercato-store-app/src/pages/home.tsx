@@ -7,14 +7,18 @@ import {
 import { Link } from "react-router-dom";
 import ProductList from "../components/ProductList";
 import Categories from "../components/categories";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import type { ProductInfo } from "../api/fakeStoreApi";
+import type { ProductContextProps } from "../context/ProductContext";
+import { ProductContext } from "../context/ProductContext";
 const Home = () => {
-  const [products, _setProducts] = useState<ProductInfo[]>([]);
+  //const [products, _setProducts] = useState<ProductInfo[]>([]);
 
   const location = useLocation();
   const prod = location.state?.dev;
+  console.log(prod);
+  const { products } = useContext(ProductContext) as ProductContextProps;
   return (
     <>
       <section className="hero border border-b border-[#e6e3de] ">
@@ -41,9 +45,12 @@ const Home = () => {
                 <FontAwesomeIcon icon={faArrowRight} />
               </span>
             </button>
-            <button className="border border-[#e6e3de] p-2 rounded-lg hover:bg-[#d06a4b] hover:text-white">
+            <a
+              href="#featured"
+              className="border border-[#e6e3de] p-2 rounded-lg hover:bg-[#d06a4b] hover:text-white"
+            >
               View Featured
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -81,24 +88,30 @@ const Home = () => {
             <p>Handpicked products just for you</p>
           </div>
           <div>
-            <button className="border border-[#e6e3de] rounded-lg p-2 hover:bg-[#d06a4b] hover:hover:text-white">
+            <Link
+              to="/products"
+              className="border border-[#e6e3de] rounded-lg p-2 hover:bg-[#d06a4b] hover:hover:text-white"
+            >
               View All{" "}
               <span>
                 <FontAwesomeIcon icon={faArrowRight} />
               </span>
-            </button>
+            </Link>
           </div>
-          {products.map((product) => (
+        </div>
+        <div className=" ml-50 mt-30 space-y-5 grid grid-cols-3 md:grid grid-cols-2 mx-auto  max-w-6xl gap-x-20">
+          {products.slice(0, 6).map((prod) => (
             <ProductList
-              id={6}
-              name={product.title}
-              quantity={product.rating.count}
-              description={product.description || " "}
-              stars={product.rating.rate}
-              image={product.image}
-              rating={prod.rate}
-              price={product.price}
-              category={product.category}
+              key={prod.id}
+              id={prod.id}
+              name={prod.title}
+              quantity={prod.rating.count}
+              description={prod.description || "No description "}
+              stars={prod.rating.rate}
+              image={prod.image}
+              rating={prod.rating}
+              price={prod.price}
+              category={prod.category}
             />
           ))}
         </div>
